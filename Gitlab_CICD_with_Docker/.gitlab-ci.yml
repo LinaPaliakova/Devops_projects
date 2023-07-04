@@ -1,0 +1,111 @@
+include: 
+    - local: 'child-pipeline.yml'
+
+default:
+    timeout:  1 hour
+
+stages:
+    - pre-check
+    - build
+    - test
+    - deploy
+    - prod-deploy
+
+.job_docker_template: &template
+    tags:
+        - CI
+        - Devops
+    only:
+        - main    
+    
+CI_Pre_Check:
+    <<: *template
+    stage: pre-check
+    allow_failure: true
+          
+    script:
+         - sudo docker version
+         - sudo docker ps
+         - sudo docker images 
+         - sleep 20
+CI_Build:
+    <<: *template
+    stage: build
+    retry: 2 
+    inherit:
+        default: false
+        
+        
+    before_script:
+        - echo "Build started"
+        - sleep 10
+    script:
+        - sudo docker login registry.gitlab.com -u palina.paliakova -p $Access_Token3
+        - sudo docker build -t registry.gitlab.com/my-projects7231126/cicd_gitlab_project .
+        - sudo docker push registry.gitlab.com/my-projects7231126/cicd_gitlab_project
+
+            
+    after_script:
+        - sudo docker images
+    
+    artifacts:
+        name: "Devops"
+        paths:  
+            - ./
+        exclude:
+            - .gitlab-ci.yml 
+        expire_in: 1 week
+        when: on_failure
+
+
+CI_Build_V2:
+    <<: *template
+    stage: build
+    
+    needs: [CI_Pre_Check]    
+     
+    before_script:
+        - echo "Build started"
+        - sleep 10         
+    script:
+        - sudo docker build -t $Image_Name_V2:$CI_PIPELINE_IID  .
+    after_script:
+        - sudo docker images            
+       
+CI_Test:
+    <<: *template
+    stage: test
+    
+    when: manual      
+     
+    script:
+        - sudo docker ps -a
+        - sudo docker images
+pages:
+  <<: *template
+  stage: deploy
+  
+  script:
+    - mkdir .public
+    - cp -r * .public
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+CI_Deploy_Testing:
+  <<: *template
+  stage: deploy
+  
+  script:
+    - sudo docker run -itd -p 8081:8081 httpd
+  environment:
+    name: Testing
+
+CI_Prod_Deploy:
+  <<: *template
+  stage: prod-deploy
+  when: manual
+  script:
+    - sudo docker run -itd -p 8080:80 registry.gitlab.com/my-projects7231126/cicd_gitlab_project:latest
+  environment:
+    name: Prod  
