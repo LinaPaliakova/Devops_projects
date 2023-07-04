@@ -1,0 +1,14 @@
+stages:
+    - test
+
+CI_Cleanup:
+    stage: test
+    tags:
+        - CI
+        - Devops
+    only:
+        - main
+    script:
+        - sudo docker image prune -a -f
+        - sudo docker system prune -a
+        
