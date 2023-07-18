@@ -3,14 +3,14 @@
   gather_facts: False
   tasks:
     - name: Import Variables
-      include_vars: vars/vpc_setup
+      include_vars: vars/var_vpc.yml
 
     - name: Create VPC
       ec2_vpc_net:
          name: "{{vpc_name}}"
-         cider_block: "{{vpcCidr}}"
+         cidr_block: "{{vpcCidr}}"
          region: "{{region}}"
-         dna_support: yes
+         dns_support: yes
          dns_hostnames: yes
          tenancy: default
          state: "{{state}}"

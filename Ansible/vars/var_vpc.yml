@@ -14,7 +14,7 @@ PrivSub3Cidr: 172.20.6.0/24
 
 # Region
 
-region: us-eat-2
+region: "us-east-2"
 
 # Zones
 
