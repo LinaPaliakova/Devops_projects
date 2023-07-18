@@ -1,0 +1,4 @@
+bastion_ami: ami-0d1c47ab964ae2b87
+region: us-eat-2
+MYIP: 192.168.56.1/32
+
