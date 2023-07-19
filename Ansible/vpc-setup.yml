@@ -138,3 +138,18 @@
             - dest: 0.0.0.0/0
               gateway_id: "{{natGW_out.nat_gateway_id}}"       
       register: privrt_out    
+
+    - debug:
+        var: "{{item}}"
+      loop:
+         - vpcout.vpc.id
+         - pubsub1_out.subnet.id
+         - pubsub2_out.subnet.id
+         - pubsub3_out.subnet.id
+         - privsub1_out.subnet.id
+         - privsub2_out.subnet.id
+         - privsub3_out.subnet.id
+         - igw_out.gateway_id
+         - pubrt_out.route_table.id
+         - natGW_out.nat_gateway_id
+         - privrt_out.route_table.id   
