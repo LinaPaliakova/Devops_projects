@@ -64,7 +64,117 @@
         rules:
           - proto: all
             group_id:: "{{ec2_out.group_id}}"
-      register: updateecsg_out 
+      register: updateecsg_out
+
+    - name: Creating Nginx host 
+      ec2:
+        key_name: vkey
+        region: "{{ region }}"
+        instance_type: t2.micro
+        image: "{{nginx_ami}}"
+        wait: yes
+        wait_timeout: 300
+        instance_tags:
+          Name: "web01"
+          Project: Ansible
+          Owner: Devops team
+        exact_count: 1
+        count_tag:
+          Name: "web01"
+          Project: Ansible
+          Owner: Devops team
+        group_id: "{{ec2_out.group_id}}"
+        vpc_subnet_id: "{{ privsub1id }}"
+      register: web01_out 
+
+    - name: Creating Tomcat host 
+      ec2:
+        key_name: vkey
+        region: "{{ region }}"
+        instance_type: t2.micro
+        image: "{{tomcat_amii}}"
+        wait: yes
+        wait_timeout: 300
+        instance_tags:
+          Name: "app01"
+          Project: Ansible
+          Owner: Devops team
+        exact_count: 1
+        count_tag:
+          Name: "app01"
+          Project: Ansible
+          Owner: Devops team
+        group_id: "{{ec2_out.group_id}}"
+        vpc_subnet_id: "{{ privsub1id }}"
+      register: app01_out
+
+    - name: Creating Memcache host 
+      ec2:
+        key_name: vkey
+        region: "{{ region }}"
+        instance_type: t2.micro
+        image: "{{memcache_ami}}"
+        wait: yes
+        wait_timeout: 300
+        instance_tags:
+          Name: "mc01"
+          Project: Ansible
+          Owner: Devops team
+        exact_count: 1
+        count_tag:
+          Name: "mc01"
+          Project: Ansible
+          Owner: Devops team
+        group_id: "{{ec2_out.group_id}}"
+        vpc_subnet_id: "{{ privsub1id }}"
+      register: mc01_out
+
+    - name: Creating RMQ host 
+      ec2:
+        key_name: vkey
+        region: "{{ region }}"
+        instance_type: t2.micro
+        image: "{{rmq_ami}}"
+        wait: yes
+        wait_timeout: 300
+        instance_tags:
+          Name: "rm01"
+          Project: Ansible
+          Owner: Devops team
+        exact_count: 1
+        count_tag:
+          Name: "rm01"
+          Project: Ansible
+          Owner: Devops team
+        group_id: "{{ec2_out.group_id}}"
+        vpc_subnet_id: "{{ privsub1id }}"
+      register: rm01_out
+
+    - name: Creating Mssql host 
+      ec2:
+        key_name: vkey
+        region: "{{ region }}"
+        instance_type: t2.micro
+        image: "{{mysql_ami}}"
+        wait: yes
+        wait_timeout: 300
+        instance_tags:
+          Name: "db01"
+          Project: Ansible
+          Owner: Devops team
+        exact_count: 1
+        count_tag:
+          Name: "db01"
+          Project: Ansible
+          Owner: Devops team
+        group_id: "{{ec2_out.group_id}}"
+        vpc_subnet_id: "{{ privsub1id }}"
+      register: rdb1_out 
+
+      - debug:
+          var: rdb1_out  
+
+
 
         
 
