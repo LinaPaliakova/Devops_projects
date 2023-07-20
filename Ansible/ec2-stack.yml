@@ -1,0 +1,24 @@
+---
+- name: Setup Ec2 stack
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: Import Variables
+      include_vars: vars/output_vars.yml
+
+    - name: Import Variables for stack
+      include_vars: vars/stacksetup.yml 
+
+    - name: Create ec2 key
+      ec2_key:
+        name: stack-key
+        region: "{{ region }}"
+      register: stackkey_out
+
+    - name: Save private key 
+      copy:
+        content: "{{stackkey_out.key.private_key}}"
+        dest: "./loginkey.pem"
+        mode: 0600
+      when: stackkey_out.changed     
