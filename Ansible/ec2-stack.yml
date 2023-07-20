@@ -47,12 +47,12 @@
           - proto: tcp
             from_port: 80
             to_port: 80
-            group_id: {{elbsg_out.group_id}}
+            group_id: "{{elbsg_out.group_id}}"
 
           - proto: tcp
             from_port: 22
             to_port: 22
-            group_id:: {{bastionsgid}}  
+            group_id:: "{{bastionsgid}}" 
       register: ec2_out
 
     - name: Update sg with itw own sgid
@@ -63,7 +63,7 @@
         vpc_id: "{{ vpc_id }}"
         rules:
           - proto: all
-            group_id:: {{ec2_out.group_id}}
+            group_id:: "{{ec2_out.group_id}}""
       register: updateecsg_out 
 
         
