@@ -92,7 +92,7 @@
         key_name: stack-key
         region: "{{ region }}"
         instance_type: t2.micro
-        image: "{{tomcat_amii}}"
+        image: "{{tomcat_ami}}"
         wait: yes
         wait_timeout: 300
         instance_tags:
