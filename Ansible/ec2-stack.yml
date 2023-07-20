@@ -171,8 +171,8 @@
         vpc_subnet_id: "{{ privsub1id }}"
       register: rdb1_out 
 
-      - debug:
-          var: rdb1_out  
+    - debug:
+        var: rdb1_out  
 
 
 
