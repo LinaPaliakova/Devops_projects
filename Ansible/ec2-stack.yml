@@ -21,4 +21,36 @@
         content: "{{stackkey_out.key.private_key}}"
         dest: "./loginkey.pem"
         mode: 0600
-      when: stackkey_out.changed     
+      when: stackkey_out.changed 
+
+    - name: Create security group for LB
+      ec2_group:
+        name: elb-sg
+        description: Allow port 80 from everywhere
+        region: "{{ region }}" 
+        vpc_id: "{{ vpc_id }}"
+        rules:
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            cidr_ip: 0.0.0.0/0
+      register: elbsg_out
+
+    - name: Create security group for ec2
+      ec2_group:
+        name: ec-sg
+        description: Allow port 22 from everywhere
+        region: "{{ region }}" 
+        vpc_id: "{{ vpc_id }}"
+        purge_rules: no
+        rules:
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            group_id:: {{elbsg_out.group_id}}
+
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            group_id:: {{bastionsgid}}  
+      register: elbsg_out  

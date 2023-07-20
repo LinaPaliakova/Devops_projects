@@ -56,5 +56,12 @@
           Owner: Devops team
         group_id: "{{bastionsg_out.group_id}}"
         vpc_subnet_id: "{{ pubsub1id }}"
-      register: Bastion_host    
+      register: Bastion_host
+
+    - name: Insert/Update Bastionsgid to vars/output_vars
+      blockinfile: 
+        path: vars/output_vars.yml
+        backup: yes
+        block: |
+          bastionsgid: {{bastionsg_out.group_id}}       
 
