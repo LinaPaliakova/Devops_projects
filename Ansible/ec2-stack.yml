@@ -63,7 +63,7 @@
         vpc_id: "{{ vpc_id }}"
         rules:
           - proto: all
-            group_id:: "{{ec2_out.group_id}}""
+            group_id:: "{{ec2_out.group_id}}"
       register: updateecsg_out 
 
         
