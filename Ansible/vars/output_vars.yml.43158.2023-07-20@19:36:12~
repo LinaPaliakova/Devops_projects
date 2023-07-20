@@ -10,6 +10,3 @@ pubtrid: rtb-04caa5be00c6b9f53
 natGWid: nat-04e658f988b007715
 privrtid: rtb-04caa5be00c6b9f53
 bastionsgid:
-# BEGIN ANSIBLE MANAGED BLOCK
-bastionsgid: sg-07af44c76f8d7f67f       
-# END ANSIBLE MANAGED BLOCK
