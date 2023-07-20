@@ -184,9 +184,9 @@
         purge_instance_ids: true
         security_group_ids: "{{elbsg_out.group_id}}"
         subnets:
-          - {{ "pubsub1id" }} 
-          - {{ "pubsub2id" }} 
-          - {{ "pubsub3id" }} 
+          - "{{ pubsub1id }}" 
+          - "{{ pubsub2id }}" 
+          - "{{ pubsub3id }}" 
         listeners:
           - protocol: http
             load_balancer_port: 80
