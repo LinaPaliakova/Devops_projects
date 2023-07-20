@@ -68,7 +68,7 @@
 
     - name: Creating Nginx host 
       ec2:
-        key_name: vkey
+        key_name: stack-key
         region: "{{ region }}"
         instance_type: t2.micro
         image: "{{nginx_ami}}"
@@ -89,7 +89,7 @@
 
     - name: Creating Tomcat host 
       ec2:
-        key_name: vkey
+        key_name: stack-key
         region: "{{ region }}"
         instance_type: t2.micro
         image: "{{tomcat_amii}}"
@@ -110,7 +110,7 @@
 
     - name: Creating Memcache host 
       ec2:
-        key_name: vkey
+        key_name: stack-key
         region: "{{ region }}"
         instance_type: t2.micro
         image: "{{memcache_ami}}"
@@ -131,7 +131,7 @@
 
     - name: Creating RMQ host 
       ec2:
-        key_name: vkey
+        key_name: stack-key
         region: "{{ region }}"
         instance_type: t2.micro
         image: "{{rmq_ami}}"
@@ -152,7 +152,7 @@
 
     - name: Creating Mssql host 
       ec2:
-        key_name: vkey
+        key_name: stack-key
         region: "{{ region }}"
         instance_type: t2.micro
         image: "{{mysql_ami}}"
