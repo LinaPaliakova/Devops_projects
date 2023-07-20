@@ -185,7 +185,6 @@
         security_group_ids: "{{elbsg_out.group_id}}"
         subnets:
           - "{{ pubsub1id }}" 
-          - "{{ pubsub2id }}" 
           - "{{ pubsub3id }}" 
         listeners:
           - protocol: http
