@@ -200,7 +200,7 @@
           app01_ip: {{app01_out.tagged_instances[0].private_ip}}
           mc01_ip: {{mc01_out.tagged_instances[0].private_ip}}
           rm01_ip: {{rmb01_out.tagged_instances[0].private_ip}}
-          db01_ip: {{db01_out.tagged_instances[0].private_ip}} 
+          db01_ip: {{rdb01_out.tagged_instances[0].private_ip}} 
 
     - name: Create a key to created directored
       copy:
@@ -217,7 +217,7 @@
           app01 ansible_host={{app01_out.tagged_instances[0].private_ip}}
           mc01  ansible_host={{mc01_out.tagged_instances[0].private_ip}}
           rm01 ansible_host={{rmb01_out.tagged_instances[0].private_ip}}
-          db01 ansible_host={{db01_out.tagged_instances[0].private_ip}} 
+          db01 ansible_host={{rdb01_out.tagged_instances[0].private_ip}} 
           cntl ansible_host=127.0.0.1 ansible_connection=local
 
           [websrvgroup]
