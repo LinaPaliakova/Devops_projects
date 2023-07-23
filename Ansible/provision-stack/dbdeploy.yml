@@ -3,6 +3,9 @@
   hosts: dbsrvgroup
   gather_facts: no
   tasks:
+    - name: Import Variables
+      include_vars: group-vars/dbrsvgroup
+      
     - name: Copy SQL to dbsrv
       copy:
         src: files/db_backup.sql

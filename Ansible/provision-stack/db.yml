@@ -3,6 +3,9 @@
   hosts: dbsrvgroup
   gather_facts: no
   tasks:
+    - name: Import Variables
+      include_vars: group-vars/dbrsvgroup
+
     - name: Installing Mysql Service and dependencies
       package:
         name: "{{item}}"
