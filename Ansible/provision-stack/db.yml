@@ -4,7 +4,7 @@
   gather_facts: no
   tasks:
     - name: Import Variables
-      include_vars: group-vars/dbrsvgroup
+      include_vars: group-vars/dbrsvgrp
 
     - name: Installing Mysql Service and dependencies
       package:
