@@ -1,0 +1,5 @@
+dbuser: admin
+dbpath: admin123
+dbname: accounts
+
+
