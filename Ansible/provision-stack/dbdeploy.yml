@@ -4,8 +4,8 @@
   gather_facts: no
   tasks:
     - name: Import Variables
-      include_vars: group-vars/dbrsvgroup
-      
+      include_vars: group-vars/dbrsvgrp
+
     - name: Copy SQL to dbsrv
       copy:
         src: files/db_backup.sql
