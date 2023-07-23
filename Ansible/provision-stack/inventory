@@ -1,0 +1,39 @@
+# BEGIN ANSIBLE MANAGED BLOCK
+web01 ansible_host=172.20.4.156
+app01 ansible_host=172.20.4.102
+mc01  ansible_host=172.20.4.169
+rm01 ansible_host=172.20.4.215
+db01 ansible_host=172.20.4.250
+cntl ansible_host=127.0.0.1 ansible_connection=local
+
+[websrvgroup]
+web01
+
+[appsrvgroup]
+app01
+
+[mcsrvgroup]
+mc01
+
+[rmsrvgroup]
+rm01
+
+[dbsrvgroup]
+db01
+
+[control]
+cntl
+
+[stackinst:children]
+websrvgroup
+appsrvgroup
+mcsrvgroup
+rmsrvgroup
+dbsrvgroup
+control
+
+[stackinst:vars]
+ansible_user=ubuntu
+ansible_private_key_file=loginkey.pem
+#ansible_python_interpreter-/usr/bin/python3
+# END ANSIBLE MANAGED BLOCK
