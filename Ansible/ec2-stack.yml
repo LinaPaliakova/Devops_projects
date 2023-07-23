@@ -52,7 +52,7 @@
           - proto: tcp
             from_port: 22
             to_port: 22
-            group_id:: "{{bastionsgid}}" 
+            group_id: "{{bastionsgid}}" 
       register: ec2_out
 
     - name: Update sg with itw own sgid
@@ -64,7 +64,7 @@
         purge_rules: no
         rules:
           - proto: all
-            group_id:: "{{ec2_out.group_id}}"
+            group_id: "{{ec2_out.group_id}}"
       
 
     - name: Creating Nginx host 
