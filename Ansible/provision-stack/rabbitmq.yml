@@ -32,11 +32,20 @@
       tags:
         - package
 
-    - apt_repository:
-        repo: deb https://dl.bintray.com/rabbitmq/debian bionic main
+    - name: Add erlang Repo
+      apt_key: 
+        url: https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc
         state: present
-      tags:
-        - package
+ 
+    - apt_repository:
+        repo: deb https://packages.erlang-solutions.com/ubuntu bionic contrib
+        state: present
+ 
+    - name: Install erlang
+      apt:
+        name: erlang
+        state: present
+        update_cache: yes
 
     - name: Install Rabbit MQ
       apt:
