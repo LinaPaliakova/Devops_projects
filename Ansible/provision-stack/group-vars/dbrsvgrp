@@ -1,5 +1,5 @@
 dbuser: admin
-dbpath: admin123
+dbpass: admin123
 dbname: accounts
 
 
