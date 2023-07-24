@@ -19,7 +19,7 @@
     - name: Save private key 
       copy:
         content: "{{stackkey_out.key.private_key}}"
-        dest: "./loginkey.pem"
+        dest: ""
         mode: 0600
       when: stackkey_out.changed 
 
