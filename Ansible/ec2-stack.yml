@@ -248,6 +248,6 @@
           control
 
           [stackinst: vars]
-          ansible_user=ubuntu
-          ansible_private_key_file=loginkey.pem
+          ansible_user=
+          ansible_private_key_file=
           #ansible_python_interpreter-/usr/bin/python3
