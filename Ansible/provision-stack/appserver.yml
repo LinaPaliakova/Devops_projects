@@ -117,7 +117,7 @@
 
         - name: Try deploy artifact else restore from previos old_ROOT
           block:
-            - name: Deploy vprofile artifact
+            - name: Deploy  artifact
               copy:
                 src: files/ROOT.war
                 dest: /usr/local/tomcat8/webapps/ROOT.war
