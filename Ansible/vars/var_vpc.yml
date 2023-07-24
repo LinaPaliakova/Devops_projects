@@ -2,15 +2,15 @@ vpc_name: "vpc"
 
 # VPC range
 
-vpcCidr: '172.20.0.0/16'
+vpcCidr: 
 
 # Subnet range
-PubSub1Cidr: 172.20.1.0/24
-PubSub2Cidr: 172.20.2.0/24
-PubSub3Cidr: 172.20.3.0/24
-PrivSub1Cidr: 172.20.4.0/24
-PrivSub2Cidr: 172.20.5.0/24
-PrivSub3Cidr: 172.20.6.0/24
+PubSub1Cidr: 
+PubSub2Cidr: 
+PubSub3Cidr: 
+PrivSub1Cidr: 
+PrivSub2Cidr: 
+PrivSub3Cidr: 
 
 # Region
 
@@ -26,5 +26,5 @@ state: present
 
 #bastion vars
 bastion_ami: ami-0d1c47ab964ae2b87
-MYIP: 78.8.45.61/32
+MYIP: 
 
