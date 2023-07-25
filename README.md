@@ -7,10 +7,10 @@ Here's a list of projects currently available in this repository:
 
 ### Project 1:  AWS Automation with Ansible
 
-Description: Setting up cloud infra and vpc to deploy a web-application.
+Description: Setting up cloud infra and vpc to deploy a web-application.<br>
 Technologies: AWS, Ansible
 
 ### Project 2: Gitlab CICD pipeline to deploy a simple web application  with the help of containers.
 
-Description:  Set Up a  GitLab CICD pipeline to build a Docker image, push it to the GitLab container registry, and deploy  the app  to the server.
+Description:  Set Up a  GitLab CICD pipeline to build a Docker image, push it to the GitLab container registry, and deploy  the app  to the server.<br>
 Technologies: Docker, GitLab
