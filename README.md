@@ -14,3 +14,8 @@ Technologies: AWS, Ansible
 
 Description:  Set Up a  GitLab CICD pipeline to build a Docker image, push it to the GitLab container registry, and deploy  the app  to the server.<br>
 Technologies: Docker, GitLab
+
+### Project 3: Java app deployment on Kubernetes.
+
+Description:  Deploy Java app on  Kubernetes cluster.<br>
+Technologies: Dockerhub, AWS, Kubernetes
