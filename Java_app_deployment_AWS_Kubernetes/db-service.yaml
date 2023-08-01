@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: vprodb
+  name: db
 spec:
   selector:
-    app: vprodb
+    app: db
   type: ClusterIP  
   ports:
   - port: 3306
-    targetPort: vprodb-port
+    targetPort: db-port
     protocol: TCP
