@@ -19,3 +19,8 @@ Technologies: Docker, GitLab
 
 Description:  Deploy Java app on  Kubernetes cluster.<br>
 Technologies: Dockerhub, AWS, Kubernetes
+
+### Project 4: Cloud State with Terraform.
+
+Description: AWS Infra provisioning and state maitenance with AWS .<br>
+Technologies: AWS, Terraform
